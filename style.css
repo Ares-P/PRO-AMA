@@ -5,28 +5,42 @@
 html,
 body {
   width: 100%;
+  min-width: 100%;
   height: 100%;
+  min-height: 100%;
   margin: 0;
 }
 
 body {
   overflow: hidden;
   background: #fffdf2;
+  min-height: 100dvh;
 }
 
 .scene {
   width: 100%;
-  height: 100%;
+  min-height: 100dvh;
+  height: 100dvh;
   display: grid;
   place-items: center;
   background:
     radial-gradient(circle at center, #fffef9 0%, #fffbea 55%, #fff5c9 100%);
+  padding:
+    env(safe-area-inset-top)
+    env(safe-area-inset-right)
+    env(safe-area-inset-bottom)
+    env(safe-area-inset-left);
 }
 
 .flower-wrap {
   position: relative;
-  width: min(78vmin, 760px);
-  aspect-ratio: 1;
+  /*
+   * La flor conserva una proporción basada en el lado menor de la pantalla.
+   * Así sigue siendo grande tanto en PC como en tablet y celular.
+   */
+  width: min(82vmin, 760px);
+  aspect-ratio: 1 / 1;
+  flex: 0 0 auto;
   display: grid;
   place-items: center;
 }
@@ -344,17 +358,76 @@ body {
 }
 
 /* -------------------------
-   CELULAR
+   RESPONSIVE
 ------------------------- */
 
+/*
+ * La geometría de la flor usa porcentajes y aspect-ratio, por lo que
+ * todos sus elementos escalan juntos sin deformarse.
+ *
+ * El tamaño cambia de acuerdo con el dispositivo, pero la flor mantiene
+ * siempre la misma forma circular.
+ */
+
+/* Tablets */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .flower-wrap {
+    width: min(84vmin, 680px);
+  }
+
+  .wave {
+    width: 78%;
+    height: 78%;
+  }
+
+  .decor-flower {
+    opacity: 0.68;
+  }
+}
+
+/* Celulares */
 @media (max-width: 600px) {
   .flower-wrap {
-    width: 94vmin;
+    width: min(94vmin, 620px);
   }
 
   .wave {
     width: 80%;
     height: 80%;
+  }
+
+  .decor-flower {
+    opacity: 0.60;
+  }
+
+  /* Se conservan las flores de los laterales sin llenar demasiado
+     una pantalla pequeña. */
+  .decor-flower:nth-child(2),
+  .decor-flower:nth-child(5) {
+    display: none;
+  }
+}
+
+/* Celular en orientación horizontal */
+@media (max-width: 900px) and (orientation: landscape) {
+  .flower-wrap {
+    width: min(90vmin, 620px);
+  }
+}
+
+/* Pantallas muy pequeñas */
+@media (max-width: 380px) {
+  .flower-wrap {
+    width: 92vmin;
+  }
+
+  .decor-flower {
+    opacity: 0.52;
+  }
+
+  .decor-flower:nth-child(1),
+  .decor-flower:nth-child(4) {
+    transform: scale(0.82);
   }
 }
 
