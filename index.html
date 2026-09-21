@@ -3,56 +3,60 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Flor Amarilla</title>
+  <title>Flores</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+  <header class="flower-header">
+    <div class="header-content">
+      <div class="brand">Flores</div>
+      <nav class="flower-menu" aria-label="Seleccionar flor">
+        <button class="flower-option active" type="button" data-flower="girasol" aria-pressed="true">
+          <span class="option-icon">🌻</span><span>Girasol</span>
+        </button>
+        <button class="flower-option" type="button" data-flower="tulipan" aria-pressed="false">
+          <span class="option-icon">🌷</span><span>Tulipán</span>
+        </button>
+        <button class="flower-option" type="button" data-flower="rosa" aria-pressed="false">
+          <span class="option-icon">🌹</span><span>Rosa</span>
+        </button>
+        <button class="flower-option" type="button" data-flower="margarita" aria-pressed="false">
+          <span class="option-icon">🌼</span><span>Margarita</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
   <main class="scene">
     <div class="flower-wrap">
-      <!-- Ondas que rodean la flor -->
       <div class="wave wave-1"></div>
       <div class="wave wave-2"></div>
       <div class="wave wave-3"></div>
 
-      <!-- Flores decorativas laterales -->
-    <div class="side-flowers" aria-hidden="true">
-      <div class="decor-flower decor-1" style="--size:82px; --x:4vw; --y:14vh; --delay:-1s; --duration:11s; --dx:42px; --dy:28px;">
-        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><i></i>
-      </div>
-      <div class="decor-flower decor-2" style="--size:58px; --x:13vw; --y:70vh; --delay:-6s; --duration:14s; --dx:-35px; --dy:-45px;">
-        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><i></i>
-      </div>
-      <div class="decor-flower decor-3" style="--size:68px; --x:89vw; --y:21vh; --delay:-3s; --duration:13s; --dx:-48px; --dy:32px;">
-        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><i></i>
-      </div>
-      <div class="decor-flower decor-4" style="--size:95px; --x:91vw; --y:75vh; --delay:-8s; --duration:15s; --dx:35px; --dy:-38px;">
-        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><i></i>
-      </div>
-      <div class="decor-flower decor-5" style="--size:44px; --x:5vw; --y:47vh; --delay:-4s; --duration:10s; --dx:28px; --dy:-30px;">
-        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><i></i>
-      </div>
-      <div class="decor-flower decor-6" style="--size:50px; --x:94vw; --y:49vh; --delay:-7s; --duration:12s; --dx:-30px; --dy:26px;">
-        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><i></i>
-      </div>
-    </div>
-
-    <!-- Flor -->
-      <div class="flower">
-        <div class="petals">
-          <span class="petal"></span><span class="petal"></span>
-          <span class="petal"></span><span class="petal"></span>
-          <span class="petal"></span><span class="petal"></span>
-          <span class="petal"></span><span class="petal"></span>
-          <span class="petal"></span><span class="petal"></span>
-          <span class="petal"></span><span class="petal"></span>
-          <span class="petal"></span><span class="petal"></span>
-          <span class="petal"></span><span class="petal"></span>
+      <div class="side-flowers" aria-hidden="true">
+        <div class="decor-flower decor-1" style="--size:82px; --x:4vw; --y:14vh; --delay:-1s; --duration:11s; --dx:42px; --dy:28px;">
+          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><i></i>
         </div>
-
-        <div class="center">
-          <div class="center-light"></div>
+        <div class="decor-flower decor-2" style="--size:58px; --x:13vw; --y:70vh; --delay:-6s; --duration:14s; --dx:-35px; --dy:-45px;">
+          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><i></i>
         </div>
+        <div class="decor-flower decor-3" style="--size:68px; --x:89vw; --y:21vh; --delay:-3s; --duration:13s; --dx:-48px; --dy:32px;">
+          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><i></i>
+        </div>
+        <div class="decor-flower decor-4" style="--size:95px; --x:91vw; --y:75vh; --delay:-8s; --duration:15s; --dx:35px; --dy:-38px;">
+          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><i></i>
+        </div>
+        <div class="decor-flower decor-5" style="--size:44px; --x:5vw; --y:47vh; --delay:-4s; --duration:10s; --dx:28px; --dy:-30px;">
+          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><i></i>
+        </div>
+        <div class="decor-flower decor-6" style="--size:50px; --x:94vw; --y:49vh; --delay:-7s; --duration:12s; --dx:-30px; --dy:26px;">
+          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><i></i>
+        </div>
+      </div>
+
+      <div class="flower" id="mainFlower" data-type="girasol" aria-label="Girasol">
+        <!-- El contenido de la flor se crea desde script.js -->
       </div>
     </div>
   </main>
