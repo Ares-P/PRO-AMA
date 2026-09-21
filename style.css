@@ -1,0 +1,369 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  overflow: hidden;
+  background: #fffdf2;
+}
+
+.scene {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at center, #fffef9 0%, #fffbea 55%, #fff5c9 100%);
+}
+
+.flower-wrap {
+  position: relative;
+  width: min(78vmin, 760px);
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+}
+
+/* -------------------------
+   ONDAS
+------------------------- */
+
+.wave {
+  position: absolute;
+  width: 76%;
+  height: 76%;
+  border: 2px solid rgb(255, 191, 0);
+  pointer-events: none;
+}
+
+.wave-1 {
+  border-radius: 47% 53% 52% 48%;
+  animation: waveOne 5s ease-in-out infinite;
+}
+
+.wave-2 {
+  border-radius: 53% 47% 45% 55%;
+  animation: waveTwo 5s ease-in-out infinite;
+  animation-delay: -1.7s;
+}
+
+.wave-3 {
+  border-radius: 45% 55% 55% 45%;
+  animation: waveThree 5s ease-in-out infinite;
+  animation-delay: -3.4s;
+}
+
+/* -------------------------
+   FLOR
+------------------------- */
+
+.flower {
+  position: relative;
+  width: 82%;
+  height: 82%;
+  display: grid;
+  place-items: center;
+  animation: flowerBreathing 4s ease-in-out infinite;
+}
+
+.petals {
+  position: absolute;
+  inset: 0;
+}
+
+.petal {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+
+  width: 25%;
+  height: 47%;
+
+  transform-origin: 50% 100%;
+
+  transform:
+    translate(-50%, -100%)
+    rotate(calc(var(--angle) * 1deg))
+    translateY(-9%);
+
+  border-radius: 52% 52% 45% 45% / 72% 72% 30% 30%;
+
+  background:
+    radial-gradient(
+      ellipse at 50% 75%,
+      #ffe34d 0%,
+      #ffd000 42%,
+      #f2aa00 100%
+    );
+
+  box-shadow:
+    inset 0 0 15px rgba(255, 244, 150, 0.7),
+    0 4px 14px rgba(215, 150, 0, 0.16);
+
+  animation: petalGlow 3.8s ease-in-out infinite;
+}
+
+/* Cada pétalo ocupa una posición diferente */
+.petal:nth-child(1)  { --angle: 0; }
+.petal:nth-child(2)  { --angle: 22.5; }
+.petal:nth-child(3)  { --angle: 45; }
+.petal:nth-child(4)  { --angle: 67.5; }
+.petal:nth-child(5)  { --angle: 90; }
+.petal:nth-child(6)  { --angle: 112.5; }
+.petal:nth-child(7)  { --angle: 135; }
+.petal:nth-child(8)  { --angle: 157.5; }
+.petal:nth-child(9)  { --angle: 180; }
+.petal:nth-child(10) { --angle: 202.5; }
+.petal:nth-child(11) { --angle: 225; }
+.petal:nth-child(12) { --angle: 247.5; }
+.petal:nth-child(13) { --angle: 270; }
+.petal:nth-child(14) { --angle: 292.5; }
+.petal:nth-child(15) { --angle: 315; }
+.petal:nth-child(16) { --angle: 337.5; }
+
+/* -------------------------
+   CENTRO
+------------------------- */
+
+.center {
+  position: relative;
+  z-index: 5;
+
+  width: 25%;
+  aspect-ratio: 1;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle at 38% 32%,
+      #936000 0%,
+      #694000 38%,
+      #3b2200 100%
+    );
+
+  box-shadow:
+    0 0 0 9px rgba(244, 174, 0, 0.12),
+    0 0 35px rgba(255, 191, 0, 0.28);
+
+  animation: centerPulse 2.8s ease-in-out infinite;
+}
+
+.center-light {
+  position: absolute;
+  inset: 20%;
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      #ffe05a,
+      #a45e00 70%
+    );
+
+  opacity: 0.8;
+}
+
+/* -------------------------
+   ANIMACIONES
+------------------------- */
+
+@keyframes waveOne {
+  0%, 100% {
+    transform: rotate(0deg) scale(0.90) skewX(-2deg);
+    border-radius: 47% 53% 52% 48%;
+    opacity: 0.25;
+  }
+
+  50% {
+    transform: rotate(180deg) scale(1.08) skewX(5deg);
+    border-radius: 58% 42% 47% 53%;
+    opacity: 0.8;
+  }
+}
+
+@keyframes waveTwo {
+  0%, 100% {
+    transform: rotate(60deg) scale(0.92) skewX(3deg);
+    border-radius: 53% 47% 45% 55%;
+    opacity: 0.2;
+  }
+
+  50% {
+    transform: rotate(240deg) scale(1.06) skewX(-5deg);
+    border-radius: 43% 57% 54% 46%;
+    opacity: 0.7;
+  }
+}
+
+@keyframes waveThree {
+  0%, 100% {
+    transform: rotate(120deg) scale(0.94) skewX(-3deg);
+    border-radius: 45% 55% 55% 45%;
+    opacity: 0.2;
+  }
+
+  50% {
+    transform: rotate(300deg) scale(1.09) skewX(4deg);
+    border-radius: 55% 45% 42% 58%;
+    opacity: 0.75;
+  }
+}
+
+@keyframes flowerBreathing {
+  0%, 100% {
+    transform: scale(0.96) rotate(-1deg);
+  }
+
+  50% {
+    transform: scale(1.02) rotate(1deg);
+  }
+}
+
+@keyframes petalGlow {
+  0%, 100% {
+    filter: brightness(0.98);
+  }
+
+  50% {
+    filter: brightness(1.08);
+  }
+}
+
+@keyframes centerPulse {
+  0%, 100% {
+    transform: scale(0.97);
+  }
+
+  50% {
+    transform: scale(1.04);
+  }
+}
+
+
+/* -------------------------
+   FLORES LATERALES
+   Solo contorno amarillo, interior transparente
+------------------------- */
+
+.side-flowers {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.decor-flower {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--size);
+  height: var(--size);
+  opacity: 0.72;
+  animation: floatingFlower var(--duration) ease-in-out var(--delay) infinite alternate;
+  will-change: transform;
+}
+
+.decor-flower span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 31%;
+  height: 48%;
+  transform-origin: 50% 100%;
+  transform:
+    translate(-50%, -100%)
+    rotate(calc(var(--angle) * 1deg))
+    translateY(-7%);
+  border: 2px solid rgba(255, 196, 0, 0.9);
+  border-radius: 52% 52% 45% 45% / 72% 72% 30% 30%;
+  background: transparent;
+  box-shadow: 0 0 7px rgba(255, 196, 0, 0.18);
+}
+
+.decor-flower span:nth-child(1) { --angle: 0; }
+.decor-flower span:nth-child(2) { --angle: 45; }
+.decor-flower span:nth-child(3) { --angle: 90; }
+.decor-flower span:nth-child(4) { --angle: 135; }
+.decor-flower span:nth-child(5) { --angle: 180; }
+.decor-flower span:nth-child(6) { --angle: 225; }
+.decor-flower span:nth-child(7) { --angle: 270; }
+.decor-flower span:nth-child(8) { --angle: 315; }
+
+.decor-flower i {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 25%;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  border: 2px solid rgba(255, 196, 0, 0.95);
+  border-radius: 50%;
+  background: transparent;
+  box-shadow: 0 0 8px rgba(255, 196, 0, 0.22);
+}
+
+@keyframes floatingFlower {
+  0% {
+    transform: translate(0, 0) rotate(-7deg) scale(0.94);
+  }
+  35% {
+    transform: translate(
+      calc(var(--dx) * 0.35),
+      calc(var(--dy) * -0.25)
+    ) rotate(4deg) scale(1);
+  }
+  70% {
+    transform: translate(
+      calc(var(--dx) * -0.45),
+      calc(var(--dy) * 0.55)
+    ) rotate(-4deg) scale(0.97);
+  }
+  100% {
+    transform: translate(var(--dx), var(--dy)) rotate(8deg) scale(1.04);
+  }
+}
+
+@media (max-width: 600px) {
+  .decor-flower {
+    opacity: 0.62;
+  }
+
+  .decor-flower:nth-child(2),
+  .decor-flower:nth-child(5) {
+    display: none;
+  }
+}
+
+/* -------------------------
+   CELULAR
+------------------------- */
+
+@media (max-width: 600px) {
+  .flower-wrap {
+    width: 94vmin;
+  }
+
+  .wave {
+    width: 80%;
+    height: 80%;
+  }
+}
+
+/* Respeta la preferencia del sistema por menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+  .wave,
+  .flower,
+  .petal,
+  .center {
+    animation: none;
+  }
+}
